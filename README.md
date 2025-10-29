@@ -1,1 +1,3 @@
-# SAE303
+# SAÉ 3.CYBER03 : Déploiement d'une Architecture Réseau Inter-Sites
+
+Ce projet consiste à déployer une architecture réseau sécurisée pour une entreprise répartie sur deux sites distincts, M et N. L'objectif principal est de configurer une connectivité inter-sites via une liaison WAN en mettant en œuvre des technologies réseau avancées. Celles-ci incluent le routage dynamique OSPF multi-zones, la segmentation par VLANs, la traduction d'adresses NAT/PAT pour contrôler l'accès à l'extérieur, une authentification centralisée via un serveur RADIUS pour sécuriser l'accès au réseau privé ou encore la mise en place de divers service comme apache2, DNS, etc.

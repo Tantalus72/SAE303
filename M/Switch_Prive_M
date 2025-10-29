@@ -1,0 +1,37 @@
+! =======================================================
+! CONFIGURATION SWITCH PRIVE - SITE [m] 
+! =======================================================
+conf t
+hostname Switch-Prive-[m]
+
+vlan [m]1
+ name SERVEUR
+vlan [m]2
+ name PRIVE
+exit
+
+interface Vlan[m]1
+ ip address 50.50.[m].253 255.255.255.0
+ no shutdown
+exit
+
+aaa new-model
+dot1x system-auth-control
+radius server RADIUS_[M]
+ address ipv4 50.50.[m].1 auth-port 1812 acct-port 1813
+ key P4ssw0rd!
+exit
+
+interface FastEthernet0/24
+ switchport mode trunk
+
+interface FastEthernet0/23
+ switchport mode access
+ switchport access vlan [m]1
+
+interface range FastEthernet0/1 - 15
+ switchport mode access
+ switchport access vlan [m]2
+ authentication port-control auto
+ dot1x pae authenticator
+ spanning-tree portfast

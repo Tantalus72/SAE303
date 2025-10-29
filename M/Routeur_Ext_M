@@ -1,0 +1,24 @@
+! =======================================================
+! CONFIGURATION ROUTEUR EXTERNE - SITE [m]
+! =======================================================
+conf t
+hostname Routeur-Ext-[m]
+
+interface GigabitEthernet0/0/0
+ ip address 90.0.[m].254 255.255.255.0
+ ip nat inside
+ no shutdown
+
+interface Serial0/1/0
+ ip address 30.0.0.[m] 255.255.255.0
+ ip nat outside
+ no shutdown
+
+ip nat inside source static tcp 50.50.[m].1 21 30.0.0.[m] 21
+ip nat inside source static tcp 50.50.[m].1 22 30.0.0.[m] 22
+ip nat inside source static tcp 50.50.[m].1 80 30.0.0.[m] 80
+
+router ospf 1
+ router-id 1[m].1[m].1[m].1[m]
+ network 90.0.[m].0 0.0.0.255 area [m]
+ network 30.0.0.0 0.0.0.255 area 0
