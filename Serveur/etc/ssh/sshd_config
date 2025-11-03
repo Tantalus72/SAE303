@@ -4,4 +4,4 @@ Port 22
 PasswordAuthentication yes
 PermitRootLogin prohibit-password
 
-# etc
+# le reste n'est pas à modifié
